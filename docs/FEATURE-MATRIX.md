@@ -7,7 +7,7 @@ Legend:
 - **Partial** — works, with a stated limitation.
 - **Unavailable** — not implemented; the UI has no fake control for it.
 
-Test command: `npm run test:all` — **212 tests, 0 failing** (83 unit, 90 integration, 39 e2e).
+Test command: `npm run test:all` — **217 tests, 0 failing** (88 unit, 90 integration, 39 e2e).
 Test files are named next to each row.
 
 ## Verification honesty statement
@@ -122,6 +122,6 @@ reports a real code instead of pretending to succeed.
 | Dockerfile, Render blueprint | Implemented, **not built or deployed here** |
 | README, setup, Firebase, Telegram, deployment, security, limitations, troubleshooting docs | Implemented |
 | Feature-completion matrix (this file) | Implemented |
-| Automated unit / integration / e2e tests | 212 passing |
+| Automated unit / integration / e2e tests | 217 passing |
 | CI pipeline config | Implemented — `.github/workflows/test.yml` runs `npm run test:all` on Node 20 and 22 |
 | Real production deployment | Not performed |
