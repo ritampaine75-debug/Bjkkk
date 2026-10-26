@@ -25,7 +25,7 @@ rest with AES-256-GCM and are never returned to the browser.
 | Execution logs + analytics | implemented, tested |
 | Interval schedules (in-process scheduler) | implemented, tested |
 | User restrictions (allow/block lists, per command) | implemented, tested |
-| Automated tests: unit, integration, end-to-end (jsdom) | 212 tests |
+| Automated tests: unit, integration, end-to-end (jsdom) | 217 tests |
 
 See [`docs/FEATURE-MATRIX.md`](docs/FEATURE-MATRIX.md) for the honest, item-by-item matrix
 (implemented / partially implemented / unavailable) — that file, not this table, is the
