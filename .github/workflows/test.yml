@@ -1,0 +1,28 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      - name: Unit + integration + end-to-end tests
+        run: npm run test:all
+        env:
+          # Test env values come from tests/helpers/test-env.js; these exist only
+          # so a missing .env cannot break the run.
+          NODE_ENV: test
+          LOG_LEVEL: error
