@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+serviceAccount*.json
+service-account*.json
+
+# Local data stores / runtime artifacts
+backend/.data/
+.data/
+*.sqlite
+*.log
+logs/
+coverage/
+.nyc_output/
+
+# Build output
+dist/
+build/
+out/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Test artifacts
+playwright-report/
+test-results/

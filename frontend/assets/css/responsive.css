@@ -1,0 +1,69 @@
+/* Mobile refinements and tablet/full-screen behaviour. Mobile-first: most
+   rules here are progressive enhancements for larger viewports. */
+
+@media (max-width: 1023px) {
+  .page-header__title h1 { font-size: var(--fs-xl); }
+  .card__body { padding: var(--space-3); }
+  .card__header { padding: var(--space-3) var(--space-3) 0; }
+  .table { min-width: 520px; }
+  .btn { min-height: var(--touch-target); }
+  .btn--sm { min-height: 36px; }
+  .stat__value { font-size: var(--fs-xl); }
+}
+
+@media (max-width: 480px) {
+  .page { gap: var(--space-4); }
+  h1 { font-size: 1.45rem; }
+  .row-between { align-items: stretch; }
+  .row-between > .btn { flex: 1 1 auto; }
+  .page-header__actions { width: 100%; }
+  .page-header__actions .btn { flex: 1 1 auto; }
+  .toast { font-size: var(--fs-base); }
+}
+
+@media (min-width: 768px) {
+  .grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat__value { font-size: var(--fs-2xl); }
+}
+
+@media (min-width: 1024px) {
+  .mobilenav { display: none; }
+  .toast-region { bottom: var(--space-6); }
+}
+
+/* Full-screen editor drawers on small screens */
+.panel-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.panel-fullscreen__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+  min-height: 52px;
+  flex-wrap: nowrap;
+}
+.panel-fullscreen__body { flex: 1 1 auto; overflow: auto; padding: var(--space-3); }
+@media (min-width: 1024px) {
+  .panel-fullscreen {
+    position: static;
+    inset: auto;
+    background: transparent;
+    overflow: visible;
+  }
+}
+
+@media print {
+  .sidebar, .topbar, .mobilenav, .toast-region { display: none !important; }
+  .main { padding: 0; }
+  body { background: #fff; }
+}

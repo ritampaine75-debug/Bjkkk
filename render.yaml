@@ -1,0 +1,38 @@
+# Render blueprint (free tier compatible).
+# The web service runs the API and serves the static frontend from the same origin.
+services:
+  - type: web
+    name: botforge-studio
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: node backend/src/server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: AUTH_MODE
+        value: firebase
+      - key: DB_MODE
+        value: firestore
+      - key: SCHEDULER_ENABLED
+        value: "true"
+      - key: APP_BASE_URL
+        fromService:
+          type: web
+          name: botforge-studio
+          property: host
+      - key: TELEGRAM_WEBHOOK_BASE_URL
+        sync: false
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: FIREBASE_CLIENT_EMAIL
+        sync: false
+      - key: FIREBASE_PRIVATE_KEY
+        sync: false
+      - key: FIREBASE_API_KEY
+        sync: false
+      - key: FIREBASE_AUTH_DOMAIN
+        sync: false
+      - key: TOKEN_ENCRYPTION_KEY
+        sync: false
