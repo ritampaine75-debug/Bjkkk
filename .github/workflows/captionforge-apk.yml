@@ -1,4 +1,6 @@
 name: Build CaptionForge APK
+permissions:
+  contents: write
 on:
   push:
     paths: ['captionforge/**', '.github/workflows/captionforge-apk.yml']
