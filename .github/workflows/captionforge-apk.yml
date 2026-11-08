@@ -17,6 +17,15 @@ jobs:
         run: |
           set -o pipefail
           gradle assembleDebug --no-daemon 2>&1 | tee build.log
+      - name: Save installable APK to repository
+        if: success()
+        run: |
+          cp captionforge/app/build/outputs/apk/debug/app-debug.apk CaptionForge-debug.apk
+          git config user.name "CaptionForge Builder"
+          git config user.email "builder@users.noreply.github.com"
+          git add -f CaptionForge-debug.apk
+          git commit -m "Package CaptionForge APK [skip ci]"
+          git push origin "$GITHUB_REF_NAME"
       - name: Publish compiler diagnostics
         if: failure()
         working-directory: captionforge
