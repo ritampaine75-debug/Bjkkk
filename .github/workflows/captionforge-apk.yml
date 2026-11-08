@@ -14,8 +14,13 @@ jobs:
         with: { gradle-version: '8.9' }
       - name: Build debug APK
         working-directory: captionforge
-        run: gradle assembleDebug --no-daemon
+        run: |
+          set -o pipefail
+          gradle assembleDebug --no-daemon 2>&1 | tee build.log
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: CaptionForge-APK
-          path: captionforge/app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            captionforge/app/build/outputs/apk/debug/app-debug.apk
+            captionforge/build.log
