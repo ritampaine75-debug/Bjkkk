@@ -20,7 +20,7 @@ jobs:
       - name: Publish compiler diagnostics
         if: failure()
         working-directory: captionforge
-        run: tail -35 build.log | while IFS= read -r line; do echo "::error::${line//%/}%25"; done
+        run: grep -A 24 -B 2 -E 'FAILURE:|What went wrong|error:' build.log | head -25 | while IFS= read -r line; do echo "::error::$line"; done
       - uses: actions/upload-artifact@v4
         if: always()
         with:
